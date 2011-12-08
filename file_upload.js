@@ -4,7 +4,8 @@
       start:    $.noop,
       success:  $.noop,
       fail:     $.noop,
-      progress: $.noop
+      progress: $.noop,
+      clear:    true
     }, options);
 
     var _start = function(event) {
@@ -19,6 +20,10 @@
         settings.success.apply(this, [xhr]);
       } else {
         settings.fail.apply(this, [xhr]);
+      }
+
+      if (settings.clear === true) {
+        $(this).val('');
       }
     };
 
